@@ -8,9 +8,9 @@
 #include <unordered_map>
 #include <random>
 
-static int SIZE = 10000;
-static int ARRAY_SIZE = 1000000;
-static int next[1000000] {0};
+static int SIZE = 1'000;
+static int ARRAY_SIZE = 16'000'000;
+static int next[16'000'000] {0};
 static std::mt19937 mt{};
 static std::uniform_int_distribution v{1, ARRAY_SIZE + 1};
 static int head = v(mt);
@@ -59,7 +59,7 @@ void construct_meta_data(){
 static void BM_Access(){
     pin_to_core(0);
     std::vector<long long> result;
-    int SAMPLE_SIZE = 10000;
+    int SAMPLE_SIZE = 1000;
     construct_meta_data();
     
     for(int i =0 ;i<SAMPLE_SIZE; ++i){ 
@@ -74,15 +74,15 @@ static void BM_Access(){
     std::unordered_map<std::string, double> m {
         {"50", 0.50 * SAMPLE_SIZE}, 
         {"99", 0.99 * SAMPLE_SIZE},
-        {"99.9", 0.999 * SAMPLE_SIZE},
-        {"99.99", 0.9999 * SAMPLE_SIZE}
+        // {"99.9", 0.999 * SAMPLE_SIZE},
+        // {"99.99", 0.9999 * SAMPLE_SIZE}
     };
 
     std::ostringstream ss;
     ss << "P50 is "<< result[int(m["50"])]<<" "<<std::endl; 
     ss << "P99 is " << result[int(m["99"])]<<" "<<std::endl;
-    ss << "P99.9 is " << result[int(m["99.9"])]<<" "<<std::endl;
-    ss << "P99.99 is " << result[int(m["99.99"])]<<" ";
+    // ss << "P99.9 is " << result[int(m["99.9"])]<<" "<<std::endl;
+    // ss << "P99.99 is " << result[int(m["99.99"])]<<" ";
 
     std::cout<<ss.str()<<std::endl;
 }

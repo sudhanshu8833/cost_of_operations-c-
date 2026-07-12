@@ -11,8 +11,6 @@ RUN git clone --depth 1 https://github.com/google/benchmark.git /tmp/benchmark &
     rm -rf /tmp/benchmark
 
 WORKDIR /app
-COPY . .
 
-RUN cmake -S . -B build && cmake --build build
-
-CMD ["./build/bench_memory"]
+# Dependencies only — no source copied, no build baked in.
+# Source is bind-mounted at run time; compile + run happens via `docker run` (see run.sh).

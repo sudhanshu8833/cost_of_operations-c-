@@ -6,9 +6,10 @@ set(CMAKE_BUILD_TYPE Release)
 
 find_package(benchmark REQUIRED)
 
-add_executable(bench_memory 
-            bench_memory.cpp
-            core_pinning.cpp)
+add_executable(cost_of_operations 
+            branch_misprediction.cpp
+            # core_pinning.cpp
+)
 
-target_link_libraries(bench_memory benchmark::benchmark)
+target_link_libraries(cost_of_operations benchmark::benchmark)
 

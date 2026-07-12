@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/stride_1_16.dir/stride_1_stride_16.cpp.o CMakeFiles/stride_1_16.dir/core_pinning.cpp.o -o stride_1_16  /usr/local/lib/libbenchmark.a -lrt 
